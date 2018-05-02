@@ -1,4 +1,9 @@
-import { Component, OnDestroy } from '@angular/core';
+import {
+  Component, OnDestroy, ViewChild, ViewContainerRef,
+  ComponentFactoryResolver, ComponentFactory, ComponentRef,
+  OnInit, AfterViewInit
+} from '@angular/core';
+
 import {
   NbMediaBreakpoint,
   NbMediaBreakpointsService,
@@ -13,6 +18,11 @@ import { StateService } from '../../../@core/data/state.service';
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/withLatestFrom';
 import 'rxjs/add/operator/delay';
+import { ContactsComponent } from '../../../pages/dashboard/contacts/contacts.component';
+import { AdDirective } from '../../../pages/dashboard/contacts/contacts-component-directive';
+import { UserService } from '../../../@core/data/users.service';
+import { concat } from 'rxjs/operators/concat';
+import { Subject } from 'rxjs';
 
 // TODO: move layouts into the framework
 @Component({
@@ -41,7 +51,7 @@ import 'rxjs/add/operator/delay';
       </nb-layout-column>
 
       <nb-layout-column left class="small" *ngIf="layout.id === 'two-column' || layout.id === 'three-column'">
-        <nb-menu [items]="subMenu"></nb-menu>
+      <ngx-contacts></ngx-contacts>
       </nb-layout-column>
 
       <nb-layout-column right class="small" *ngIf="layout.id === 'three-column'">
@@ -62,7 +72,17 @@ import 'rxjs/add/operator/delay';
     </nb-layout>
   `,
 })
-export class SampleLayoutComponent  implements OnDestroy {
+export class SampleLayoutComponent implements OnDestroy, OnInit, AfterViewInit {
+
+  contacts: any[];
+  test: string;
+ subject = new Subject();
+  ngAfterViewInit(): void {
+
+  }
+  ngOnInit(): void {
+    this.initContacts();
+  }
 
   subMenu: NbMenuItem[] = [
     {
@@ -112,11 +132,14 @@ export class SampleLayoutComponent  implements OnDestroy {
   protected sidebarState$: Subscription;
   protected menuClick$: Subscription;
 
-  constructor(protected stateService: StateService,
+  constructor(private userService: UserService,
+              protected stateService: StateService,
               protected menuService: NbMenuService,
               protected themeService: NbThemeService,
               protected bpService: NbMediaBreakpointsService,
-              protected sidebarService: NbSidebarService) {
+              protected sidebarService: NbSidebarService,
+              private componentFactoryResolver: ComponentFactoryResolver) {
+
     this.layoutState$ = this.stateService.onLayoutState()
       .subscribe((layout: string) => this.layout = layout);
 
@@ -134,6 +157,25 @@ export class SampleLayoutComponent  implements OnDestroy {
         if (bpTo.width <= isBp.width) {
           this.sidebarService.collapse('menu-sidebar');
         }
+      });
+  }
+
+  initContacts(): void {
+
+    console.log('sample.layout: ');
+    this.userService.getTwitterUsers()
+      .subscribe(users => {
+       // this.test = "ffffffffffffffff";
+        this.contacts = [
+          { user: users[0], type: '554' },
+          { user: users[1], type: 'home' },
+          { user: users[2], type: 'mobile' },
+          { user: users[3], type: 'mobile' },
+          { user: users[4], type: 'home' },
+          { user: users[5], type: 'work' },
+        ];
+        //console.log('init contact:' + JSON.stringify(this.contacts));
+        this.test = JSON.stringify(this.contacts);
       });
   }
 

@@ -2,6 +2,9 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ContactsComponent } from '../pages/dashboard/contacts/contacts.component';
+import { AdDirective } from '../pages/dashboard/contacts/contacts-component-directive';
+import { UserService } from '../@core/data/users.service';
 
 import {
   NbActionsModule,
@@ -56,6 +59,7 @@ const NB_MODULES = [
   NbContextMenuModule,
   NgbModule,
   NbSecurityModule, // *nbIsGranted directive
+  CommonModule,
 ];
 
 const COMPONENTS = [
@@ -69,6 +73,8 @@ const COMPONENTS = [
   SampleLayoutComponent,
   ThreeColumnsLayoutComponent,
   TwoColumnsLayoutComponent,
+  ContactsComponent,
+  AdDirective,
 ];
 
 const PIPES = [
@@ -93,12 +99,13 @@ const NB_THEME_PROVIDERS = [
   imports: [...BASE_MODULES, ...NB_MODULES],
   exports: [...BASE_MODULES, ...NB_MODULES, ...COMPONENTS, ...PIPES],
   declarations: [...COMPONENTS, ...PIPES],
+  entryComponents: [ContactsComponent],
 })
 export class ThemeModule {
   static forRoot(): ModuleWithProviders {
     return <ModuleWithProviders>{
       ngModule: ThemeModule,
-      providers: [...NB_THEME_PROVIDERS],
+      providers: [...NB_THEME_PROVIDERS], ContactsComponent, UserService,
     };
   }
 }

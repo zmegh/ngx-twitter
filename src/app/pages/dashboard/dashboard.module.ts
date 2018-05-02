@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ViewContainerRef } from '@angular/core';
 
 import { NgxEchartsModule } from 'ngx-echarts';
 
 import { ThemeModule } from '../../@theme/theme.module';
 import { DashboardComponent } from './dashboard.component';
 import { StatusCardComponent } from './status-card/status-card.component';
-import { ContactsComponent } from './contacts/contacts.component';
+
 import { RoomsComponent } from './rooms/rooms.component';
 import { RoomSelectorComponent } from './rooms/room-selector/room-selector.component';
 import { TemperatureComponent } from './temperature/temperature.component';
@@ -20,7 +20,7 @@ import { SolarComponent } from './solar/solar.component';
 import { PlayerComponent } from './rooms/player/player.component';
 import { TrafficComponent } from './traffic/traffic.component';
 import { TrafficChartComponent } from './traffic/traffic-chart.component';
-
+import { ContactsComponent } from './contacts/contacts.component';
 
 @NgModule({
   imports: [
@@ -31,7 +31,7 @@ import { TrafficChartComponent } from './traffic/traffic-chart.component';
     DashboardComponent,
     StatusCardComponent,
     TemperatureDraggerComponent,
-    ContactsComponent,
+
     RoomSelectorComponent,
     TemperatureComponent,
     RoomsComponent,
@@ -46,5 +46,6 @@ import { TrafficChartComponent } from './traffic/traffic-chart.component';
     TrafficComponent,
     TrafficChartComponent,
   ],
+  entryComponents: [ContactsComponent],
 })
 export class DashboardModule { }

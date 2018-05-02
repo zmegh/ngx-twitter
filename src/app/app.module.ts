@@ -14,6 +14,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ThemeModule } from './@theme/theme.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ThemeSettingsComponent } from './@theme/components/theme-settings/theme-settings.component';
+import { ContactsComponent } from './pages/dashboard/contacts/contacts.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,7 +31,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   bootstrap: [AppComponent],
   providers: [
-    { provide: APP_BASE_HREF, useValue: '/' },
+    { provide: APP_BASE_HREF, useValue: '/' }, ThemeSettingsComponent, ContactsComponent
   ],
 })
 export class AppModule {

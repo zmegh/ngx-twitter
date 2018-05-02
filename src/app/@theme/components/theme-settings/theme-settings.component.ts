@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { StateService } from '../../../@core/data/state.service';
+import { concat } from 'rxjs/operators/concat';
 
 @Component({
   selector: 'ngx-theme-settings',
@@ -41,7 +42,7 @@ export class ThemeSettingsComponent {
       .subscribe((sidebars: any[]) => this.sidebars = sidebars);
   }
 
-  layoutSelect(layout: any): boolean {
+  public layoutSelect(layout: any): boolean {
     this.layouts = this.layouts.map((l: any) => {
       l.selected = false;
       return l;

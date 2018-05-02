@@ -46,7 +46,11 @@
       font-family: nb-theme(font-secondary);
       font-weight: nb-theme(font-weight-bold);
       color: nb-theme(color-fg-heading);
-      font-size: 1.25rem;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      width: 150px;
+      overflow: hidden;
+      text-overflow: ellipsis;
 
       @include nb-for-theme(cosmic) {
         font-weight: nb-theme(font-weight-bolder);
