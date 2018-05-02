@@ -177,7 +177,6 @@ export class BubbleMapComponent implements OnDestroy {
   }
 
   refresh(): void {
-
     this.http.get('assets/map/mapData.json').subscribe(res => this.mapData = res as any[]);
   }
 
