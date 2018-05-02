@@ -3,9 +3,9 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import { of } from 'rxjs/observable/of';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { asObservable } from "./asObservable";
-import { TwitterUsersBackendService } from "./twitter.user.data.service";
-import { User } from "../models/twitter.user";
+import { asObservable } from './asObservable';
+import { TwitterUsersBackendService } from './twitter.user.data.service';
+import { User } from '../models/twitter.user';
 import * as usersData from '../../../assets/map/usersData.json';
 let counter = 0;
 
@@ -41,18 +41,16 @@ export class UserService {
   }
 
   loadContacts(countryName: string) {
-    let i = 0;
     let _users = [];
     this.twitterUsersBackendService.getData()
       .subscribe(
       res => {
         res = res as any[];
         res = (<any[]>res).filter(u => u.countryCode == countryName);
-        console.log('after filter:  for ' + countryName + (<any[]>res).length);
+
         res = (<any[]>res).sort(this.compare);
         res = (<any[]>res).slice(0, 10);
         let todos = (<any[]>res).map((user: any) => {
-          console.log(user.country);
 
           let _user = new User(user.id, user.screen_name, user.name, user.profile_image_url_https,
             user.friends_count, user.followers_count, user.statuses_count, user.country);
@@ -61,7 +59,7 @@ export class UserService {
           this._contacts.next(_users);
         });
       },
-      err => console.log("Error retrieving Todos")
+      err => console.log('Error retrieving Todos')
       );
   }
 

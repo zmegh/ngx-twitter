@@ -150,7 +150,7 @@ export class BubbleMapComponent implements OnDestroy {
                     },
                   };
                 }
-                else { console.log('new country' + itemOpt.code); }
+                else { }
               }),
             },
           ],
@@ -166,9 +166,8 @@ export class BubbleMapComponent implements OnDestroy {
     }
     else {
       countryCode = e.event.target.eventData.name;
-      console.log(e);
     }
-    console.log(countryCode);
+
     this.userService.loadContacts(countryCode);
     this.themeSettings.layoutSelect({ name: "Two Column", icon: "nb-layout-two-column", id: "two-column" });
   }

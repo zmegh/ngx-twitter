@@ -13,14 +13,10 @@ export class TwitterUsersBackendService {
   private rawJson: string;
   private users: any[];
   private observable: Observable<any>;
-  private url: string = '../../../assets/map/usersData.json';
+  private url: string = 'assets/map/usersData.json';
 
   constructor(private http: HttpClient) {
     this.http = http;
-  }
-
-  getAllContacts() {
-    return this.http.get('/todo');
   }
 
   getContactByCountryName(countryName: string) {

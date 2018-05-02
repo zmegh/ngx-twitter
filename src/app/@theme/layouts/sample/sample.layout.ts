@@ -1,6 +1,6 @@
 import {
-  Component, OnDestroy, ViewChild, ViewContainerRef,
-  ComponentFactoryResolver, ComponentFactory, ComponentRef,
+  Component, OnDestroy, ViewContainerRef,
+ ComponentFactory, ComponentRef,
   OnInit, AfterViewInit
 } from '@angular/core';
 
@@ -81,7 +81,7 @@ export class SampleLayoutComponent implements OnDestroy, OnInit, AfterViewInit {
 
   }
   ngOnInit(): void {
-    this.initContacts();
+    //this.initContacts();
   }
 
   subMenu: NbMenuItem[] = [
@@ -137,8 +137,7 @@ export class SampleLayoutComponent implements OnDestroy, OnInit, AfterViewInit {
               protected menuService: NbMenuService,
               protected themeService: NbThemeService,
               protected bpService: NbMediaBreakpointsService,
-              protected sidebarService: NbSidebarService,
-              private componentFactoryResolver: ComponentFactoryResolver) {
+              protected sidebarService: NbSidebarService) {
 
     this.layoutState$ = this.stateService.onLayoutState()
       .subscribe((layout: string) => this.layout = layout);
