@@ -21,12 +21,14 @@ import { PlayerComponent } from './rooms/player/player.component';
 import { TrafficComponent } from './traffic/traffic.component';
 import { TrafficChartComponent } from './traffic/traffic-chart.component';
 import { ContactsComponent } from './contacts/contacts.component';
+import { AuthService } from '../../auth/auth.service';
 
 @NgModule({
   imports: [
     ThemeModule,
     NgxEchartsModule,
   ],
+  providers: [AuthService],
   declarations: [
     DashboardComponent,
     StatusCardComponent,

@@ -17,8 +17,7 @@ import * as mapData from 'assets/map/mapData.json';
   styleUrls: ['./bubble-map.component.scss'],
   template: `
     <nb-card>
-    <nb-card-header>SOCIALLY MAPPED <div class='icon'><i (click)=refresh()
-    class='ion-refresh'></i></div></nb-card-header>
+    <nb-card-header><div class='icon'></div></nb-card-header>
       <nb-card-body>
         <div echarts (chartClick)="onChartEvent($event, 'chartClick')"
                      (chartDataZoom)="onChartEvent($event, 'chartDataZoom')"
@@ -136,7 +135,7 @@ export class BubbleMapComponent implements OnDestroy {
 
                 if (this.latlong[itemOpt.code]) {
                   return {
-                    name: itemOpt.code,
+                    name: itemOpt.name,
                     countryCode: itemOpt.code,
                     value: [
                       this.latlong[itemOpt.code].longitude,

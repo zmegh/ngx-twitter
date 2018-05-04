@@ -3,12 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\@core",
-    "\\src\\app\\@core\\data",
-    "\\src\\app\\pages\\maps\\bubble",
-    "\\src\\assets",
-    "\\src\\assets\\map"
+    "\\src\\app\\@theme",
+    "\\src\\app\\@theme\\components",
+    "\\src\\app\\@theme\\directives",
+    "\\src\\app\\@theme\\layouts",
+    "\\src\\app\\@theme\\layouts\\sample",
+    "\\src\\app\\@theme\\layouts\\two-columns",
+    "\\src\\app\\pages"
   ],
-  "SelectedNode": "\\src\\assets\\map\\mapData.json",
+  "SelectedNode": "\\src\\app\\@theme\\theme.module.ts",
   "PreviewInSolutionExplorer": false
 }
