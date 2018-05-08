@@ -22,7 +22,7 @@ const components = [
   GridComponent,
   ModalsComponent,
   IconsComponent,
-  ModalComponent,
+  
   TypographyComponent,
   TabsComponent,
   Tab1Component,

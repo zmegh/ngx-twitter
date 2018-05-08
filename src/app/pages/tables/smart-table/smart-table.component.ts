@@ -1,7 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
+import { Headers, Response, Http, RequestOptions, HttpHeaders, URLSearchParams } from '@angular/http';
+import { CustomSmartTablebuttonComponent } from './custom-smart-table-button-component';
+import { CustomDropdownCellComponent } from './custom-dropdown-cell-component';
+import { InvoiceService } from '../../../@core/data/invoice.service';
+import { ModalComponent } from '../../ui-features/modals/modal/modal.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { SmartTableService } from '../../../@core/data/smart-table.service';
+@NgModule({
+  imports: [
+    ModalComponent,
+  ]
+})
 
 @Component({
   selector: 'ngx-smart-table',
@@ -14,54 +24,65 @@ import { SmartTableService } from '../../../@core/data/smart-table.service';
 })
 export class SmartTableComponent {
 
+  url = "http://localhost:49618/api/Invoice/";
+
   settings = {
-    add: {
-      addButtonContent: '<i class="nb-plus"></i>',
-      createButtonContent: '<i class="nb-checkmark"></i>',
-      cancelButtonContent: '<i class="nb-close"></i>',
-    },
-    edit: {
-      editButtonContent: '<i class="nb-edit"></i>',
-      saveButtonContent: '<i class="nb-checkmark"></i>',
-      cancelButtonContent: '<i class="nb-close"></i>',
-    },
-    delete: {
-      deleteButtonContent: '<i class="nb-trash"></i>',
-      confirmDelete: true,
+    mode: external,
+    actions: {
+        add: false,
+        edit: false,
+        delete: false,
     },
     columns: {
       id: {
-        title: 'ID',
+        title: 'Invoice No.',
         type: 'number',
       },
-      firstName: {
-        title: 'First Name',
+      invoiceDate: {
+        title: 'Date',
         type: 'string',
       },
-      lastName: {
-        title: 'Last Name',
+      customer: {
+        title: 'Customer',
+        type: 'string',
+        width: '200px'
+
+      },
+      service: {
+        title: 'Service',
         type: 'string',
       },
-      username: {
-        title: 'Username',
+      statusText: {
+        title: 'Status',
         type: 'string',
       },
-      email: {
-        title: 'E-mail',
-        type: 'string',
-      },
-      age: {
-        title: 'Age',
+      totalAmount: {
+        title: 'Total Amount',
         type: 'number',
+      },
+      amountDue: {
+        title: 'Amount Due',
+        type: 'number',
+      },
+      button: {
+        title: 'actions',
+        type: 'custom',
+        renderComponent: CustomSmartTablebuttonComponent,
+        filter: false
       },
     },
   };
 
   source: LocalDataSource = new LocalDataSource();
 
-  constructor(private service: SmartTableService) {
-    const data = this.service.getData();
-    this.source.load(data);
+  constructor(private invoiceService: InvoiceService, private modalService: NgbModal,
+    private http: Http) {
+
+    this.invoiceService
+      .invoices()
+      .then(result => this.source.load(result))
+      .catch(error => console.log(error));
+
   }
 
   onDeleteConfirm(event): void {
@@ -71,4 +92,62 @@ export class SmartTableComponent {
       event.confirm.reject();
     }
   }
+
+  onCreate(event): void {
+
+    let invoice = new invoiceObject();
+    invoice.id = 23;
+    invoice.customer = "j doe";
+    invoice.statusText = "unpaid";
+    invoice.service = "fsfsdfsd";
+    invoice.amountDue = 834.43;
+    invoice.totalAmount = 343.3;
+    invoice.invoiceDate = "23/03/2019";
+
+    let data = new URLSearchParams();
+    data.append('username', 'u');
+    data.append('password', 'p');
+    let headers = new Headers({ 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    let invoices = [];
+    invoices.push(invoice);
+    this.http.post(this.url + "insert", invoice, options).subscribe(res => {
+      console.log('post sent');
+    }, error => { console.error(error) });
+  }
+
+  onAction(event): void {
+    alert(event);
+  }
+
+  onUserRowSelect(event): void {
+    console.log(event);
+  }
+
+  showStaticModal() {
+    const activeModal = this.modalService.open(CustomDropdownCellComponent, {
+      size: 'sm',
+      backdrop: 'static',
+      container: 'nb-layout',
+    });
+
+    activeModal.componentInstance.modalHeader = 'Static modal';
+    activeModal.componentInstance.modalContent = `This is static modal, backdrop click
+                                                    will not close it. Click × or confirmation button to close modal.`;
+    activeModal.componentInstance = CustomDropdownCellComponent;
+  }
+
+  onCustom(event) {
+    alert(`Custom event '${event.action}' fired on row №: ${event.data.id}`)
+  }
+}
+
+export class invoiceObject {
+  id: number;
+  invoiceDate: string;
+  customer: string;
+  service: string;
+  statusText: string;
+  totalAmount: number;
+  amountDue: number;
 }

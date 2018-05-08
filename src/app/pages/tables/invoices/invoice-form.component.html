@@ -1,0 +1,188 @@
+<a class="nb-theme-cosmic nb-card-header" href="/#/pages/tables/smart-table">.. > Invoice</a><br />
+<div class="row">
+  <div class="col-md-12">
+    <nb-card class="inline-form-card">
+      <nb-card-header>New Invoice</nb-card-header>
+    </nb-card>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-6">
+    <nb-card>
+      <nb-card-body>
+        <div class="input-group">
+          <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+          <span class="input-group-append">
+            <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+              <i class="nb-keypad"></i>
+            </button>
+          </span>
+        </div>
+        <div class="input-group">
+          <select class="form-control" id="status">
+            <option>Select from list or add new customer...</option>
+            <option *ngFor="let customer of customers" [ngValue]="customer.ID">
+              {{customer.firstName}}  {{ customer.lastName}}
+            </option>
+          </select>
+          <span class="input-group-append">
+            <button class="btn btn-primary btn-icon input-group-text" (click)="toggleNewCustomerDialog()">
+              <i *ngIf="!showNewCustomer" class="nb-plus"></i>
+              <i *ngIf="showNewCustomer" class="ion-minus-round"></i>
+            </button>
+          </span>
+        </div>
+
+        <!-- new Customer -->
+
+        <nb-card *ngIf="showNewCustomer">
+          <nb-card-header> Add New Customer</nb-card-header>
+          <nb-card-body>
+
+            <div class="row full-name-inputs">
+              <div class="col-sm-6 input-group">
+                <input type="text" placeholder="First Name" class="form-control" />
+              </div>
+              <div class="col-sm-6 input-group">
+                <input type="text" placeholder="Last Name" class="form-control" />
+              </div>
+            </div>
+
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Address" />
+            </div>
+
+            <div class="row full-name-inputs">
+              <div class="col-sm-4 input-group">
+                <input type="text" placeholder="City" class="form-control" />
+              </div>
+              <div class="col-sm-4 input-group">
+                <select class="form-control">
+                  <option value="AL">Alabama</option>
+                  <option value="AK">Alaska</option>
+                  <option value="AZ">Arizona</option>
+                  <option value="AR">Arkansas</option>
+                  <option value="CA">California</option>
+                  <option value="CO">Colorado</option>
+                  <option value="CT">Connecticut</option>
+                  <option value="DE">Delaware</option>
+                  <option value="DC">District Of Columbia</option>
+                  <option value="FL">Florida</option>
+                  <option value="GA">Georgia</option>
+                  <option value="HI">Hawaii</option>
+                  <option value="ID">Idaho</option>
+                  <option value="IL">Illinois</option>
+                  <option value="IN">Indiana</option>
+                  <option value="IA">Iowa</option>
+                  <option value="KS">Kansas</option>
+                  <option value="KY">Kentucky</option>
+                  <option value="LA">Louisiana</option>
+                  <option value="ME">Maine</option>
+                  <option value="MD">Maryland</option>
+                  <option value="MA">Massachusetts</option>
+                  <option value="MI">Michigan</option>
+                  <option value="MN">Minnesota</option>
+                  <option value="MS">Mississippi</option>
+                  <option value="MO">Missouri</option>
+                  <option value="MT">Montana</option>
+                  <option value="NE">Nebraska</option>
+                  <option value="NV">Nevada</option>
+                  <option value="NH">New Hampshire</option>
+                  <option value="NJ">New Jersey</option>
+                  <option value="NM">New Mexico</option>
+                  <option value="NY">New York</option>
+                  <option value="NC">North Carolina</option>
+                  <option value="ND">North Dakota</option>
+                  <option value="OH">Ohio</option>
+                  <option value="OK">Oklahoma</option>
+                  <option value="OR">Oregon</option>
+                  <option value="PA">Pennsylvania</option>
+                  <option value="RI">Rhode Island</option>
+                  <option value="SC">South Carolina</option>
+                  <option value="SD">South Dakota</option>
+                  <option value="TN">Tennessee</option>
+                  <option value="TX">Texas</option>
+                  <option value="UT">Utah</option>
+                  <option value="VT">Vermont</option>
+                  <option value="VA">Virginia</option>
+                  <option value="WA">Washington</option>
+                  <option value="WV">West Virginia</option>
+                  <option value="WI">Wisconsin</option>
+                  <option value="WY">Wyoming</option>
+                </select>
+              </div>
+              <div class="col-sm-4 input-group">
+                <input type="text" placeholder="Zip Code" class="form-control" />
+              </div>
+            </div>
+
+            <div class="row full-name-inputs">
+              <div class="col-sm-6 input-group">
+                <span class="input-group-addon success">@</span>
+                <input type="text" class="form-control" placeholder="Email" />
+              </div>
+
+              <div class="col-sm-6 input-group">
+                <span class="input-group-addon success"><i _ngcontent-c12="" class="nb-phone"></i></span>
+                <input type="text" class="form-control" placeholder="Phone Number" />
+              </div>
+            </div>
+          </nb-card-body>
+        </nb-card>
+
+        <!-- end new customer-->
+
+
+        <div class="form-group">
+          <label for="service">Service</label>
+          <input type="text" id="service" placeholder="Service" class="form-control">
+        </div>
+      </nb-card-body>
+    </nb-card>
+  </div>
+
+  <div class="col-md-6">
+    <nb-card>
+    
+      <nb-card-body>
+        <form>
+          <div class="form-group">
+            <label for="status">Status</label>
+            <select class="form-control" id="status">
+              <option value="1">Unpaid</option>
+              <option value="2">Paid</option>
+              <option value="3">Pending</option>
+              <option value="4">Overdue</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="totalAmount">Total Amount</label>
+            <input type="text" class="form-control" id="totalAmount" placeholder="Total Amount">
+          </div>
+          <div class="form-group">
+            <label for="amountDue">Amount Due</label>
+            <input type="text" class="form-control" id="amountDude" placeholder="Amount Due">
+          </div>
+         
+          
+        </form>
+      </nb-card-body>
+    </nb-card>
+
+
+
+  </div>
+</div>
+
+<div class="row text-center">
+  <div class="col-md-2">
+  </div>
+  <div class="col-md-6">
+    <nb-card class="inline-form-card">
+      <button type="submit" class="btn btn-md btn-primary">Submit</button>
+    </nb-card>
+  </div>
+  <div class="col-md-2">
+  </div>
+</div>

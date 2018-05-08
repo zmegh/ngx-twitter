@@ -5,11 +5,12 @@ export class SmartTableService {
 
   data = [{
     id: 1,
-    firstName: 'Mark',
-    lastName: 'Otto',
-    username: '@mdo',
-    email: 'mdo@gmail.com',
-    age: '28',
+    invoiceDate: '02/23/2019',
+    customer: 'Joe Otto',
+    service: 'cleaning',
+    status: 'Unpaid',
+    totalAmount: '28.31',
+    amountDue: '28.31'
   }, {
     id: 2,
     firstName: 'Jacob',

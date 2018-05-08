@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -17,6 +17,10 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
       <button class="btn btn-md btn-primary" (click)="closeModal()">Save changes</button>
     </div>
   `,
+})
+
+@NgModule({
+    providers: [NgbActiveModal]
 })
 export class ModalComponent {
 
