@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { HttpModule } from '@angular/http';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/toPromise';
 import { of } from 'rxjs/observable/of';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { asObservable } from './asObservable';
-import { Headers, Response, Http, RequestOptions, HttpHeaders, URLSearchParams } from '@angular/http';
+import { Headers, Response, Http, RequestOptions, URLSearchParams } from '@angular/http';
 import * as appConfig from '../../../appSettings.json';
 
 @Injectable()
@@ -33,6 +34,24 @@ invoices() {
 
   customers(): Promise<any>{
     return this.http.get(this.apiUrl + "customers")
+      .toPromise()
+      .then(this.extractData)
+      .catch(this.handleError);
+  }
+
+  /*data: [
+    { value: 335, name: 'Germany' },
+    { value: 310, name: 'France' },
+    { value: 234, name: 'Canada' },
+    { value: 135, name: 'Russia' },
+    { value: 1548, name: 'USA' },
+  ]*/
+
+  echartData(): Promise<any>{
+
+    let data = new Array();
+
+    return this.http.get(this.apiUrl + "chart-data")
       .toPromise()
       .then(this.extractData)
       .catch(this.handleError);

@@ -9,15 +9,7 @@
     "\\src\\app\\@theme\\layouts",
     "\\src\\app\\@theme\\layouts\\sample",
     "\\src\\app\\pages",
-    "\\src\\app\\pages\\maps",
-    "\\src\\app\\pages\\maps\\bubble",
-    "\\src\\app\\pages\\tables",
-    "\\src\\app\\pages\\tables\\smart-table",
-    "\\src\\app\\pages\\ui-features",
-    "\\src\\app\\pages\\ui-features\\buttons",
-    "\\src\\app\\pages\\ui-features\\buttons\\dropdown-buttons",
-    "\\src\\app\\pages\\ui-features\\buttons\\icon-buttons"
+    "\\src\\app\\pages\\maps"
   ],
-  "SelectedNode": "\\src\\app\\pages\\tables\\smart-table\\smart-table.component.ts",
   "PreviewInSolutionExplorer": false
 }

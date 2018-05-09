@@ -118,7 +118,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },
   {
-    title: 'Editors',
+    title: 'Customers',
     icon: 'nb-title',
     children: [
       {
@@ -132,12 +132,16 @@ export const MENU_ITEMS: NbMenuItem[] = [
     ],
   },
   {
-    title: 'Tables',
+    title: 'Invoices',
     icon: 'nb-tables',
     children: [
       {
-        title: 'Smart Table',
+        title: 'Invoices',
         link: '/pages/tables/smart-table',
+      },
+      {
+        title: 'New Invoice',
+        link: '/pages/tables/invoices/new-invoice',
       },
     ],
   },

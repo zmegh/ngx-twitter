@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-import { REACTIVE_FORM_DIRECTIVES } from '@angular/forms';
 
 @Component({
   moduleId: module.id,
   selector: 'sd-custom-form',
   templateUrl: 'stripe.component.html',
   styleUrls: ['stripe.component.css'],
-  directives: [REACTIVE_FORM_DIRECTIVES]
 })
 export class CustomFormComponent {
   cardNumber: string;

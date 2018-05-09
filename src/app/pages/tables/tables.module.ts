@@ -6,6 +6,7 @@ import { SmartTableService } from '../../@core/data/smart-table.service';
 import { InvoiceService } from '../../@core/data/invoice.service';
 import { ModalComponent } from '../ui-features/modals/modal/modal.component';
 import { InvoiceFormComponent } from './invoices/invoice-form.component';
+import { CustomSmartTablebuttonComponent } from './smart-table/custom-smart-table-button-component';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { InvoiceFormComponent } from './invoices/invoice-form.component';
     ModalComponent,
     InvoiceFormComponent,
   ],
+  entryComponents: [CustomSmartTablebuttonComponent],
   providers: [
     SmartTableService,
     InvoiceService,

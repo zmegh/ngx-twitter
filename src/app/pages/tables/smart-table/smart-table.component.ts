@@ -1,6 +1,6 @@
 import { Component, NgModule } from '@angular/core';
 import { LocalDataSource } from 'ng2-smart-table';
-import { Headers, Response, Http, RequestOptions, HttpHeaders, URLSearchParams } from '@angular/http';
+import { Headers, Response, Http, RequestOptions, URLSearchParams } from '@angular/http';
 import { CustomSmartTablebuttonComponent } from './custom-smart-table-button-component';
 import { CustomDropdownCellComponent } from './custom-dropdown-cell-component';
 import { InvoiceService } from '../../../@core/data/invoice.service';
@@ -24,7 +24,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class SmartTableComponent {
 
-  url = "http://localhost:49618/api/Invoice/";
+  url = 'http://localhost:49618/api/Invoice/';
 
   settings = {
     mode: external,
@@ -97,12 +97,12 @@ export class SmartTableComponent {
 
     let invoice = new invoiceObject();
     invoice.id = 23;
-    invoice.customer = "j doe";
-    invoice.statusText = "unpaid";
-    invoice.service = "fsfsdfsd";
+    invoice.customer = 'j doe';
+    invoice.statusText = 'unpaid';
+    invoice.service = 'fsfsdfsd';
     invoice.amountDue = 834.43;
     invoice.totalAmount = 343.3;
-    invoice.invoiceDate = "23/03/2019";
+    invoice.invoiceDate = '23/03/2019';
 
     let data = new URLSearchParams();
     data.append('username', 'u');
@@ -111,7 +111,7 @@ export class SmartTableComponent {
     let options = new RequestOptions({ headers: headers });
     let invoices = [];
     invoices.push(invoice);
-    this.http.post(this.url + "insert", invoice, options).subscribe(res => {
+    this.http.post(this.url + 'insert', invoice, options).subscribe(res => {
       console.log('post sent');
     }, error => { console.error(error) });
   }
