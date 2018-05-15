@@ -12,7 +12,7 @@
     <nb-card>
       <nb-card-body>
         <div class="input-group">
-          <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+          <input [(ngModel)]="invoice.invoiceDate"  class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #d="ngbDatepicker">
           <span class="input-group-append">
             <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
               <i class="nb-keypad"></i>
@@ -20,10 +20,10 @@
           </span>
         </div>
         <div class="input-group">
-          <select class="form-control" id="status">
-            <option>Select from list or add new customer...</option>
-            <option *ngFor="let customer of customers" [ngValue]="customer.ID">
-              {{customer.firstName}}  {{ customer.lastName}}
+          <select [(ngModel)]="invoice.customerId" class="form-control" id="customerId" name="customer">
+            <option value="0">Select from list or add new customer...</option>
+            <option *ngFor="let customer of customers" [ngValue]="customer">
+              {{customer.firstName}}  {{customer.lastName}}
             </option>
           </select>
           <span class="input-group-append">
@@ -133,10 +133,9 @@
 
         <!-- end new customer-->
 
-
         <div class="form-group">
           <label for="service">Service</label>
-          <input type="text" id="service" placeholder="Service" class="form-control">
+          <input type="text" [(ngModel)]="invoice.service" id="service" name="service" placeholder="Service" class="form-control">
         </div>
       </nb-card-body>
     </nb-card>
@@ -149,7 +148,7 @@
         <form>
           <div class="form-group">
             <label for="status">Status</label>
-            <select class="form-control" id="status">
+            <select [(ngModel)]="invoice.statusId" name="statusId"  class="form-control" id="status">
               <option value="1">Unpaid</option>
               <option value="2">Paid</option>
               <option value="3">Pending</option>
@@ -158,19 +157,15 @@
           </div>
           <div class="form-group">
             <label for="totalAmount">Total Amount</label>
-            <input type="text" class="form-control" id="totalAmount" placeholder="Total Amount">
+            <input type="text" [(ngModel)]="invoice.totalAmount" name="totalAmount" class="form-control" id="totalAmount" placeholder="Total Amount">
           </div>
           <div class="form-group">
             <label for="amountDue">Amount Due</label>
-            <input type="text" class="form-control" id="amountDude" placeholder="Amount Due">
+            <input type="text" [(ngModel)]="invoice.amountDue" name="amountDue" class="form-control" id="amountDude" placeholder="Amount Due">
           </div>
-         
-          
         </form>
       </nb-card-body>
     </nb-card>
-
-
 
   </div>
 </div>
@@ -180,7 +175,7 @@
   </div>
   <div class="col-md-6">
     <nb-card class="inline-form-card">
-      <button type="submit" class="btn btn-md btn-primary">Submit</button>
+      <button type="submit" (click)="insertInvoice()" class="btn btn-md btn-primary">Submit</button>
     </nb-card>
   </div>
   <div class="col-md-2">

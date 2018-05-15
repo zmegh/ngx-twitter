@@ -3,13 +3,14 @@
     "",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\@theme",
-    "\\src\\app\\@theme\\components",
-    "\\src\\app\\@theme\\components\\header",
-    "\\src\\app\\@theme\\layouts",
-    "\\src\\app\\@theme\\layouts\\sample",
+    "\\src\\app\\@core",
+    "\\src\\app\\@core\\data",
+    "\\src\\app\\@core\\models",
     "\\src\\app\\pages",
-    "\\src\\app\\pages\\maps"
+    "\\src\\app\\pages\\charts",
+    "\\src\\app\\pages\\maps",
+    "\\src\\app\\pages\\maps\\leaflet"
   ],
+  "SelectedNode": "\\src\\app\\@core\\data\\smart-table.service.ts",
   "PreviewInSolutionExplorer": false
 }

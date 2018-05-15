@@ -141,13 +141,3 @@ export class SmartTableComponent {
     alert(`Custom event '${event.action}' fired on row №: ${event.data.id}`)
   }
 }
-
-export class invoiceObject {
-  id: number;
-  invoiceDate: string;
-  customer: string;
-  service: string;
-  statusText: string;
-  totalAmount: number;
-  amountDue: number;
-}
