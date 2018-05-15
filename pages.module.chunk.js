@@ -12399,7 +12399,7 @@ var WeatherComponent = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MENU_ITEMS; });
 var MENU_ITEMS = [
     {
-        title: 'ngx tweets',
+        title: 'Tweet Map & Stats',
         icon: 'nb-home',
         link: '/pages/maps/bubble',
         home: true,
