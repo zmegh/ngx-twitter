@@ -1,7 +1,7 @@
 <nb-card [size]="breakpoint.width >= breakpoints.xxxl || breakpoint.width < breakpoints.md ? 'large' : 'xlarge'">
-  <nb-tabset fullWidth *ngIf="contacts | async">
-    <nb-tab tabTitle="Top Users In {{currentCountry | async}}">
-      <div class="contact" *ngFor="let c of contacts | async">
+  <nb-tabset fullWidth *ngIf="contacts">
+    <nb-tab tabTitle="Top Users In {{currentCountry}}">
+      <div class="contact" *ngFor="let c of contacts">
         <nb-user [picture]="c.profile_image_url" [name]="c.name" [title]="c.followers_count" size="large"></nb-user>
         <a class="ion ion-social-twitter" href="https://www.twitter.com/{{c.screen_name}}" target="_blank"></a>
       </div>

@@ -8,9 +8,10 @@ import { Observable } from 'rxjs/Rx';
 import { ThemeSettingsComponent } from '../../../@theme/components/theme-settings/theme-settings.component';
 import { ContactsComponent } from '../../../pages/dashboard/contacts/contacts.component';
 import { UserService } from '../../../@core/data/users.service';
+import { MapDataService } from '../../../@core/data/map.data.service';
 
 import * as latLong from 'assets/map/latLong.json';
-import * as mapData from 'assets/map/mapData.json';
+
 
 @Component({
   selector: 'ngx-bubble-map',
@@ -49,14 +50,16 @@ export class BubbleMapComponent implements OnDestroy {
     private es: NgxEchartsService,
     private themeSettings: ThemeSettingsComponent,
     private contactComponent: ContactsComponent,
-    private userService: UserService) {
+    private userService: UserService,
+    private mapDataService: MapDataService) {
 
     combineLatest([
       this.http.get('assets/map/world.json'),
-      this.theme.getJsTheme()
+      this.theme.getJsTheme(),
+      this.mapDataService.getMapData()
     ])
       .pipe(takeWhile(() => this.alive))
-      .subscribe(([map, config]: [any, any]) => {
+      .subscribe(([map, config, mapData]: [any, any, any]) => {
 
         this.es.registerMap('world', map);
 

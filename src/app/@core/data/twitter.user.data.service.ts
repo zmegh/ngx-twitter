@@ -10,7 +10,7 @@ export class TwitterUsersBackendService {
   private rawJson: string;
   private users: any[];
   private observable: Observable<any>;
-  private url = appConfig['mapDataPath'];
+  private url = appConfig['userDataPath'];
 
   constructor(private http: HttpClient) {
     this.http = http;
@@ -21,7 +21,7 @@ export class TwitterUsersBackendService {
   }
 
   getData() {
-    return this.http.get(this.url);
+       return this.http.get(this.url);
   }
 
 }

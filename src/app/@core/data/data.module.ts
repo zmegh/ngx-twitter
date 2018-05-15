@@ -8,6 +8,7 @@ import { ElectricityService } from './electricity.service';
 import { StateService } from './state.service';
 import { SmartTableService } from './smart-table.service';
 import { PlayerService } from './player.service';
+import { MapDataService } from './map.data.service';
 
 const SERVICES = [
   UserService,
@@ -16,6 +17,7 @@ const SERVICES = [
   SmartTableService,
   PlayerService,
   TwitterUsersBackendService,
+  MapDataService,
 ];
 
 @NgModule({

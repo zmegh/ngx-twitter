@@ -28,6 +28,8 @@ export class ContactsComponent implements OnInit, OnDestroy, ContactsInterface {
   @Input() data: any;
 
   recent: any[];
+  contacts: any[];
+  currentCountry: string;
   breakpoint: NbMediaBreakpoint;
   breakpoints: any;
   themeSubscription: any;
@@ -41,14 +43,16 @@ export class ContactsComponent implements OnInit, OnDestroy, ContactsInterface {
       .subscribe(([oldValue, newValue]) => {
         this.breakpoint = newValue;
       });
+    this.setContacts();
+    this.setCurrentCountry();
   }
 
-  get contacts() {
-    return this.userService.contacts.map((users: Array<User>) => users);
+   setContacts() {
+     return this.userService.contacts.subscribe(tweets => this.contacts = tweets as any[]);
   }
 
-  get currentCountry() {
-    return this.userService.contacts.map((users: Array<User>) => users[0].country);
+  setCurrentCountry() {
+    return this.userService.contacts.subscribe(users => this.currentCountry = users[0].country);
   }
 
 
