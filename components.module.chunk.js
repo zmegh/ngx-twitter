@@ -2867,6 +2867,21 @@ __WEBPACK_IMPORTED_MODULE_0__Observable__["Observable"].prototype.filter = __WEB
 
 /***/ }),
 
+/***/ "./node_modules/rxjs/_esm5/add/operator/share.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Observable__ = __webpack_require__("./node_modules/rxjs/_esm5/Observable.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__operator_share__ = __webpack_require__("./node_modules/rxjs/_esm5/operator/share.js");
+/** PURE_IMPORTS_START .._.._Observable,.._.._operator_share PURE_IMPORTS_END */
+
+
+__WEBPACK_IMPORTED_MODULE_0__Observable__["Observable"].prototype.share = __WEBPACK_IMPORTED_MODULE_1__operator_share__["a" /* share */];
+//# sourceMappingURL=share.js.map 
+
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/angular2-toaster/toaster.css":
 /***/ (function(module, exports, __webpack_require__) {
 
